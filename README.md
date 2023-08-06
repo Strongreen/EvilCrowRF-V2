@@ -2,247 +2,246 @@
 
 ![EvilCrow](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/Logo1.png)
 
-**Idea, development and implementation:** Joel Serna (@JoelSernaMoreno).
+**Ideia, desenvolvimento e implementação:** Joel Serna (@JoelSernaMoreno).
 
-**Main collaborator:** Little Satan (https://github.com/LSatan/)
+**Colaborador principal:** Little Satan (https://github.com/LSatan/)
 
-**Other collaborators:** Eduardo Blázquez (@_eblazquez), Federico Maggi (@phretor), Andrea Guglielmini (@Guglio95) and RFQuack (@rfquack).
+**Outros colaboradores:** Eduardo Blázquez (@_eblazquez), Federico Maggi (@phretor), Andrea Guglielmini (@Guglio95) e RFQuack (@rfquack).
 
-**PCB design:** Ignacio Díaz Álvarez (@Nacon_96), Forensic Security (@ForensicSec) and April Brother (@aprbrother).
+**Design de PCB:** Ignacio Díaz Álvarez (@Nacon_96), Forensic Security (@ForensicSec) e April Brother (@aprbrother).
 
-**Manufacturer and distributor:** April Brother (@aprbrother).
+**Fabricante e distribuidor:** April Brother (@aprbrother).
 
-**Distributor from United Kingdom:** KSEC Worldwide (@KSEC_KC).
+**Distribuidor do Reino Unido:** KSEC Worldwide (@KSEC_KC).
 
-The developers and collaborators of this project do not earn money with this. 
-You can invite me for a coffee to further develop Low-Cost hacking devices. If you don't invite me for a coffee, nothing happens, I will continue developing devices.
+Os desenvolvedores e colaboradores deste projeto não ganham dinheiro com isso.
+Você pode me convidar para um café para desenvolver ainda mais dispositivos de hackers de baixo custo. Se você não me convidar para um café, nada acontece, continuarei desenvolvendo dispositivos.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E614OA5)
 
-**For sale with April Brother (shipping from China):** 
+**À venda com a April Brother (envio da China):**
 
 * Evil Crow RF V2 Aliexpress: https://aliexpress.com/item/1005004019072519.html
-* Evil Crow RF V2 Lite (without NRF2401L) Aliexpress: https://aliexpress.com/item/1005004032930927.html
-* Evil Crow RF V2 Alibaba: https://www.alibaba.com/product-detail/Evil-Crow-RF2-signal-receiver-with_1600467911757.html 
+* Evil Crow RF V2 Lite (sem NRF2401L) Aliexpress: https://aliexpress.com/item/1005004032930927.html
+* Evil Crow RF V2 Alibaba: https://www.alibaba.com/product-detail/Evil-Crow-RF2-signal-receiver-with_1600467911757.html
 
-**For sale with KSEC Worldwide (shipping from United Kingdom):**
+**Para venda com KSEC Worldwide (envio do Reino Unido):**
 
 * Evil Crow RF V2: https://labs.ksec.co.uk/product/evil-crow-rf-v2/
 * Evil Crow RF V2 Lite: https://labs.ksec.co.uk/product/evil-crow-rf2-lite/
 
-**Discord Group:** https://discord.gg/jECPUtdrnW
+**Grupo do Discord:** https://discord.gg/jECPUtdrnW
 
-**Summary:**
+**Resumo:**
 
-1. Disclaimer
-2. Introduction
+1. Isenção de responsabilidade
+2. Introdução
 3. Firmware
-	* Installation
-	* First steps with Evil Crow RF V2
-	* RX Config Example
-	* RX Log Example
-	* RAW TX Config Example
-	* Binary TX Config Example
-	* Pushbuttons Configuration
-	* Tesla Charge Door Opener
-	* URH Parse example
-	* OTA Update
-	* Wi-Fi Config
-	* Power management
-	* Other Sketches
-4. Evil Crow RF V2 Support
+* Instalação
+* Primeiros passos com Evil Crow RF V2
+* Exemplo de Configuração RX
+* Exemplo de Log RX
+* Exemplo de configuração RAW TX
+* Exemplo de configuração de TX binário
+* Configuração de botões
+* Abridor de porta de carga Tesla
+* Exemplo de análise de URH
+* Atualização OTA
+* Configuração Wi-Fi
+* Gerenciamento de energia
+* Outros esboços
+4. Suporte Evil Crow RF V2
 
-# Disclaimer
+# Isenção de responsabilidade
 
-Evil Crow RF V2 is a basic device for professionals and cybersecurity enthusiasts.
+O Evil Crow RF V2 é um dispositivo básico para profissionais e entusiastas de cibersegurança.
 
-We are not responsible for the incorrect use of Evil Crow RF V2.
+Não somos responsáveis pelo uso incorreto do Evil Crow RF V2.
 
-We recommend using this device for testing, learning and fun :D
+Recomendamos o uso deste dispositivo para testes, aprendizado e diversão :D
 
-**Be careful with this device and the transmission of signals. Make sure to follow the laws that apply to your country.**
+**Cuidado com este aparelho e com a transmissão de sinais. Certifique-se de seguir as leis que se aplicam ao seu país.**
 
 ![EvilCrowRF](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/evilcrowrfv2.jpg)
 
-# Introduction
+# Introdução
 
-Evil Crow RF V2 is a radiofrequency hacking device for pentest and Red Team operations, this device operates in the following radiofrequency bands:
+Evil Crow RF V2 é um dispositivo de hacking de radiofrequência para operações de pentest e Red Team, este dispositivo opera nas seguintes bandas de radiofrequência:
 
 * 300Mhz-348Mhz
 * 387Mhz-464Mhz
 * 779Mhz-928Mhz
-* 2.4GHz
+* 2,4 GHz
 
-Evil Crow RF V2 has two CC1101 radiofrequency modules, these modules can be configured to transmit or receive on different frequencies at the same time. Additionally, Evil Crow RF V2 has a NRF24L01 module for other attacks.
+O Evil Crow RF V2 possui dois módulos de radiofrequência CC1101, esses módulos podem ser configurados para transmitir ou receber em diferentes frequências ao mesmo tempo. Além disso, o Evil Crow RF V2 possui um módulo NRF24L01 para outros ataques.
 
-Evil Crow RF V2 allows the following attacks:
+Evil Crow RF V2 permite os seguintes ataques:
 
-* Signal receiver
-* Signal transmitter
-* Replay attack
-* URH parse
+* Receptor de sinal
+* Transmissor de sinal
+* Ataque de repetição
+* análise URH
 * Mousejacking
 * ...
 
-**NOTE:** 
+**OBSERVAÇÃO:**
 
-* All devices have been flashed with basic firmware Evil Crow RF V2 before shipping.
-* Please do not ask me to implement new functions in this code. You can develop code for Evil Crow RF V2 and send PR with your new code.
+* Todos os dispositivos foram atualizados com o firmware básico Evil Crow RF V2 antes do envio.
+* Por favor, não me peça para implementar novas funções neste código. Você pode desenvolver código para Evil Crow RF V2 e enviar PR com seu novo código.
 
-# Firmware
+#Firmware
 
-The basic firmware allows to receive and transmit signals. You can configure the two radio modules through a web panel via WiFi.
+O firmware básico permite receber e transmitir sinais. Você pode configurar os dois módulos de rádio através de um painel web via WiFi.
 
-## Installation
+## Instalação
 
-1. Install esptool: sudo apt install esptool
-2. Install pyserial: sudo pip install pyserial
-3. Download and Install the Arduino IDE: https://www.arduino.cc/en/main/software
-4. Download Evil Crow RF V2 repository: git clone https://github.com/joelsernamoreno/EvilCrowRF-V2.git
-5. Download the ESPAsyncWebServer library in the Arduino library directory: git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
-6. Download the AsyncElegantOTA library in the Arduino library directory: git clone https://github.com/ayushsharma82/AsyncElegantOTA.git
-7. Download the ESP32-targz library in the Arduino library directory: git clone https://github.com/tobozo/ESP32-targz.git
-8. Download the AsyncTCP library in the Arduino library directory: git clone https://github.com/me-no-dev/AsyncTCP.git
-9. Edit AsyncTCP/src/AsyncTCP.h and change the following:
+1. Instale o esptool: sudo apt install esptool
+2. Instale o pyserial: sudo pip install pyserial
+3. Baixe e instale o Arduino IDE: https://www.arduino.cc/en/main/software
+4. Baixe o repositório Evil Crow RF V2: git clone https://github.com/joelsernamoreno/EvilCrowRF-V2.git
+5. Baixe a biblioteca ESPAsyncWebServer no diretório da biblioteca Arduino: git clone https://github.com/me-no-dev/ESPAsyncWebServer.git
+6. Baixe a biblioteca AsyncElegantOTA no diretório da biblioteca do Arduino: git clone https://github.com/ayushsharma82/AsyncElegantOTA.git
+7. Baixe a biblioteca ESP32-targz no diretório da biblioteca do Arduino: git clone https://github.com/tobozo/ESP32-targz.git
+8. Baixe a biblioteca AsyncTCP no diretório da biblioteca do Arduino: git clone https://github.com/me-no-dev/AsyncTCP.git
+9. Edite AsyncTCP/src/AsyncTCP.he altere o seguinte:
 
-* #define CONFIG_ASYNC_TCP_USE_WDT 1 to #define CONFIG_ASYNC_TCP_USE_WDT 0 
+* #define CONFIG_ASYNC_TCP_USE_WDT 1 a #define CONFIG_ASYNC_TCP_USE_WDT 0
 
-10. Open Arduino IDE
-11. Go to File - Preferences. Locate the field "Additional Board Manager URLs:" Add "https://dl.espressif.com/dl/package_esp32_index.json" without quotes. Click "Ok"
-12. Select Tools - Board - Boards Manager. Search for "esp32". Install "esp32 by Espressif system version 1.0.6". Click "Close".
-13. Open the EvilCrowRF-V2/firmware/v1.3.2/EvilCrow-RFv2/EvilCrow-RFv2.ino sketch
-14. Select Tools:
-    * Board - "ESP32 Dev Module".
-    * Flash Size - "4MB (32Mb)".
-    * CPU Frequency - "80MHz (WiFi/BT)".
-    * Flash Frequency - "40MHz"
-    * Flash Mode - "DIO"
-15. Upload the code to the Evil Crow RF V2 device
-16. Copy the EvilCrowRF-V2/firmware/v1.3.2/SD/HTML folder to a MicroSD card.
-17. Copy the EvilCrowRF-V2/firmware/v1.3.2/SD/URH folder to a MicroSD card.
-
+10. Abra o Arduino IDE
+11. Vá para Arquivo - Preferências. Localize o campo "Additional Board Manager URLs:" Adicione "https://dl.espressif.com/dl/package_esp32_index.json" sem aspas. Clique OK"
+12. Selecione Ferramentas - Placa - Gerenciador de Placas. Procure por "esp32". Instale "esp32 by Espressif system version 1.0.6". Clique em "Fechar".
+13. Abra o esboço EvilCrowRF-V2/firmware/v1.3.2/EvilCrow-RFv2/EvilCrow-RFv2.ino
+14. Selecione Ferramentas:
+     * Placa - "Módulo ESP32 Dev".
+     * Tamanho do Flash - "4MB (32Mb)".
+     * Frequência da CPU - "80MHz (WiFi/BT)".
+     * Frequência do Flash - "40MHz"
+     * Modo Flash - "DIO"
+15. Carregue o código para o dispositivo Evil Crow RF V2
+16. Copie a pasta EvilCrowRF-V2/firmware/v1.3.2/SD/HTML para um cartão MicroSD.
+17. Copie a pasta EvilCrowRF-V2/firmware/v1.3.2/SD/URH para um cartão MicroSD.
+    
 ![SD](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/sd.png)
 
-**Notes about SD:** 
+**Observações sobre SD:**
 
-* Web server will not load, is a blank page or displays nothing:
+* O servidor Web não carrega, é uma página em branco ou não exibe nada:
 
-Check you have copied the relevant files to the SD card and the SD card is inserted in the Evil Crow RF V2 device. Check you are connected to the Wifi Access Point of the Evil Crow RF V2.
+Verifique se você copiou os arquivos relevantes para o cartão SD e se o cartão SD está inserido no dispositivo Evil Crow RF V2. Verifique se você está conectado ao ponto de acesso Wi-Fi do Evil Crow RF V2.
 
-* My files are on the SD card but the web server will not work:
+* Meus arquivos estão no cartão SD, mas o servidor web não funciona:
 
-Check your SD card size. It is recommended to use a small card. 32GB or smaller is sufficent for operation. Cards larger than this have been shown to cause issues and not work.
+Verifique o tamanho do seu cartão SD. Recomenda-se usar um cartão pequeno. 32 GB ou menos é suficiente para a operação. Cartões maiores do que isso demonstraram causar problemas e não funcionar.
 
-* I cannot access the internet when I am connected to the Evil Crow RF V2:
+* Não consigo acessar a internet quando estou conectado ao Evil Crow RF V2:
 
-By default, the Evil Crow operates as an access point. When you connect to it, it has no internet access as it is not connected to the internet. If you need internet at the same time, read the Wi-Fi Config section of this repository to configure Evil Crow RF V2 in STATION mode.
+Por padrão, o Evil Crow opera como um ponto de acesso. Quando você se conecta a ele, ele não tem acesso à internet, pois não está conectado à internet. Se você precisar de internet ao mesmo tempo, leia a seção Wi-Fi Config deste repositório para configurar o Evil Crow RF V2 no modo STATION.
 
-## First steps with Evil Crow RF V2
+## Primeiros passos com Evil Crow RF V2
 
-0. Check & verify you have copied the relevant files to your SD card.
-1. Insert the MicroSD card into the Evil Crow RF V2 and connect the device to an external battery or laptop.
-2. Visualize the wifi networks around you and connect to the Evil Crow RF V2 (default SSID: Evil Crow RF v2).
-3. Enter the password for the wifi network (default password: 123456789).
-4. Open a browser and access the web panel (default IP: 192.168.4.1).
-5. Go!
+0. Verifique e verifique se você copiou os arquivos relevantes para o seu cartão SD.
+1. Insira o cartão MicroSD no Evil Crow RF V2 e conecte o dispositivo a uma bateria externa ou laptop.
+2. Visualize as redes wi-fi ao seu redor e conecte-se ao Evil Crow RF V2 (SSID padrão: Evil Crow RF v2).
+3. Digite a senha da rede wi-fi (senha padrão: 123456789).
+4. Abra um navegador e acesse o painel web (IP padrão: 192.168.4.1).
+5. Vá!
 
 ![Webpanel](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/webpanel.png)
 
-## RX Config Example
+## Exemplo de Configuração RX
 
-* Module: (1 for first CC1101 module, 2 for second CC1101 module)
-* Modulation: (example ASK/OOK)
-* Frequency: (example 433.92)
-* RxBW bandwidth: (example 58)
-* Deviation: (example 0)
-* Data rate: (example 5)
+* Módulo: (1 para o primeiro módulo CC1101, 2 para o segundo módulo CC1101)
+* Modulação: (exemplo ASK/OOK)
+* Frequência: (exemplo 433.92)
+* Largura de banda RxBW: (exemplo 58)
+* Desvio: (exemplo 0)
+* Taxa de dados: (exemplo 5)
 
 ![RX](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/rx.png)
 
-**2-FSK NOTES:**
+**NOTAS 2-FSK:**
 
-* Evil Crow RF V2 allows 2-FSK (RX/TX) modulation, this is configured for use with CC1101 module 2. Do not use CC1101 module 1 for 2-FSK RX. 
+* Evil Crow RF V2 permite modulação 2-FSK (RX/TX), isso é configurado para uso com CC1101 módulo 2. Não use CC1101 módulo 1 para 2-FSK RX.
 
-* You can use 2-FSK TX with module 1 or with module 2. 
+* Você pode usar 2-FSK TX com o módulo 1 ou com o módulo 2.
 
-* Evil Crow RF V2 allows you to receive signals at the same time on two different frequencies, but this does not work correctly if you use 2-FSK. Make sure you use module 2 for 2-FSK RX, while doing this do not use module 1 for anything or you will not receive the 2-FSK signals correctly. 
+* Evil Crow RF V2 permite que você receba sinais ao mesmo tempo em duas frequências diferentes, mas isso não funciona corretamente se você usar 2-FSK. Certifique-se de usar o módulo 2 para 2-FSK RX, ao fazer isso não use o módulo 1 para nada ou você não receberá os sinais 2-FSK corretamente.
 
-* You can receive two signals on different frequencies with ASK/OOK.
+* Você pode receber dois sinais em frequências diferentes com ASK/OOK.
 
-## RX Log Example
+## Exemplo de Log RX
 
 ![RXLog](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/rx-log.png)
 
-## RAW TX Config Example
+## Exemplo de Configuração RAW TX
 
-* Module: (1 for first CC1101 module, 2 for second CC1101 module)
-* Modulation: (example ASK/OOK)
-* Transmissions: (number transmissions)
-* Frequency: (example 433.92)
-* RAW Data: (raw data or raw data corrected displayed in RX Log)
-* Deviation: (example 0)
+* Módulo: (1 para o primeiro módulo CC1101, 2 para o segundo módulo CC1101)
+* Modulação: (exemplo ASK/OOK)
+* Transmissões: (número de transmissões)
+* Frequência: (exemplo 433.92)
+* RAW Data: (dados brutos ou dados brutos corrigidos exibidos no RX Log)
+* Desvio: (exemplo 0)
 
 ![TXRAW](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/txraw.png)
 
-## Binary TX Config Example
+## Exemplo de configuração de TX binário
 
-* Module: (1 for first CC1101 module, 2 for second CC1101 module)
-* Modulation: (example ASK/OOK)
-* Transmissions: (number transmissions)
-* Frequency: (example 433.92)
-* Binary Data: (binary data displayed in RX Log)
-* Sample Pulse: (samples/symbol displayed in RX Log)
-* Deviation: (example 0)
+* Módulo: (1 para o primeiro módulo CC1101, 2 para o segundo módulo CC1101)
+* Modulação: (exemplo ASK/OOK)
+* Transmissões: (número de transmissões)
+* Frequência: (exemplo 433.92)
+* Dados Binários: (dados binários exibidos no RX Log)
+* Sample Pulse: (amostras/símbolo exibido no RX Log)
+* Desvio: (exemplo 0)
 
 ![TXBINARY](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/txbinary.png)
 
-## Pushbuttons Configuration
+## Configuração de Botões
 
-* Button: (1 for first pushbutton, 2 for second pushbutton)
-* Modulation: (example ASK/OOK)
-* Transmissions: (number transmissions)
-* Frequency: (example 433.92)
-* RAW Data: (raw data or raw data corrected displayed in RX Log)
-* Deviation: (example 0)
+* Botão: (1 para o primeiro botão, 2 para o segundo botão)
+* Modulação: (exemplo ASK/OOK)
+* Transmissões: (número de transmissões)
+* Frequência: (exemplo 433.92)
+* RAW Data: (dados brutos ou dados brutos corrigidos exibidos no RX Log)
+* Desvio: (exemplo 0)
 
 ![TXBUTTON](https://github.com/joelsernamoreno/EvilCrowRF-V2/blob/main/images/pushbutton.png)
 
 ## Tesla Charge Door Opener
 
-Demo: https://www.youtube.com/watch?v=feNokjfEGgs
+Demonstração: https://www.youtube.com/watch?v=feNokjfEGgs
 
-## URH Parse example
+## Exemplo de análise de URH
 
-Demo: https://youtube.com/watch?v=TAgtaAnLL6U
+Demonstração: https://youtube.com/watch?v=TAgtaAnLL6U
 
-## OTA Update
+## Atualização OTA
 
-Demo: https://www.youtube.com/watch?v=YQFNLyHu42A
+Demonstração: https://www.youtube.com/watch?v=YQFNLyHu42A
 
-## WiFi Config
+## Configuração WiFi
 
-Evil Crow RF V2 is configured in AP mode with a default SSID and password. You can change the mode to STATION or AP, change SSID, change password and change Wi-Fi channel remotely from the web panel.
+O Evil Crow RF V2 é configurado no modo AP com um SSID e senha padrão. Você pode alterar o modo para STATION ou AP, alterar o SSID, alterar a senha e alterar o canal Wi-Fi remotamente a partir do painel da web.
 
-The changes will be stored in the device, every time you restart Evil Crow RF V2 the new Wi-Fi settings will be applied. If you want to return to the default settings, you can delete the stored Wi-Fi configuration from the web panel.
+As alterações serão armazenadas no dispositivo, toda vez que você reiniciar o Evil Crow RF V2, as novas configurações de Wi-Fi serão aplicadas. Se quiser retornar às configurações padrão, você pode excluir a configuração de Wi-Fi armazenada no painel da web.
 
-**NOTE:** When changing the Wi-Fi configuration you have to fill in all the fields correctly, if you do not do this you bricked the device.
+**NOTA:** Ao alterar a configuração do Wi-Fi, você deve preencher todos os campos corretamente, caso contrário, você bloqueou o dispositivo.
 
-## Power Management
+## Gerenciamento de energia
 
-1. In normal mode, press push2 + reset, then release reset: Evil Crow RF v2 blinks several times and goes to sleep. 
-2. In sleep mode, press push2 + reset, then release reset to wake him up.
+1. No modo normal, pressione push2 + reset e solte reset: Evil Crow RF v2 pisca várias vezes e vai dormir.
+2. No modo de hibernação, pressione push2 + reset e solte reset para acordá-lo.
 
-Demo: https://www.youtube.com/shorts/K_Qkss6-pEY
+Demonstração: https://www.youtube.com/shorts/K_Qkss6-pEY
 
-**NOTE:** If Evil Crow RF v2 is sleeping and you accidentally press reset, he'll go straight back to sleep. If he isn't asleep and you press reset then he will stay awake too.
+**NOTA:** Se o Evil Crow RF v2 estiver dormindo e você acidentalmente pressionar reset, ele voltará a dormir. Se ele não estiver dormindo e você pressionar reset, ele também ficará acordado.
 
-## Other Sketches
+## Outros esboços
 
 * Mousejacking: EvilCrowRF-V2/firmware/other/standalone-mousejacking
 * ...
 
-# Evil Crow RF V2 Support
+# Suporte Evil Crow RF V2
 
-* You can ask in the Discord group: https://discord.gg/jECPUtdrnW
-* You can open issue or send me a message via twitter (@JoelSernaMoreno).
-
+* Você pode perguntar no grupo do Discord: https://discord.gg/jECPUtdrnW
+* Você pode abrir a issue ou me enviar uma mensagem via twitter (@JoelSernaMoreno).
